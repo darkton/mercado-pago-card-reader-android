@@ -23,11 +23,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final int PAYMENT_REQUEST = 1;
-
     private Button payButton;
     private EditText currencyInput;
     private EditText descriptionInput;
-
     private String current = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,28 +59,24 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(!s.toString().equals(current)) {
                     currencyInput.removeTextChangedListener(this);
-
                     String cleanedString = cleanString(s.toString());
-
                     double parsed = Double.parseDouble(cleanedString);
                     String formatted = NumberFormat.getCurrencyInstance().format((parsed / 100));
-
                     current = formatted;
                     currencyInput.setText(formatted);
                     currencyInput.setSelection(formatted.length());
-
                     currencyInput.addTextChangedListener(this);
                 }
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                // :)
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                // :)
             }
         });
     }
@@ -120,12 +114,9 @@ public class MainActivity extends AppCompatActivity {
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         Intent intent = result.getData();
-
                         Intent ResultIntent = new Intent(getBaseContext(), Result.class);
                         ResultIntent.putExtras(intent);
                         startActivity(ResultIntent);
-
-
                     }
                 }
             });
@@ -134,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         String a = s.toString().replace("R", "");
         String b = a.replaceAll("[$,.]", "");
         String c = b.replaceAll("\\s+","");
-
         return c;
     }
 }

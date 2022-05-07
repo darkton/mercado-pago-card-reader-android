@@ -13,7 +13,6 @@ public class Result extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.result);
-
         Bundle data = getIntent().getExtras();
 
         if (data != null) {
